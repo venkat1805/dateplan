@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You</title>
+    <link rel="stylesheet" href="css/flower.css" />
+  </head>
+  <body>
+    <div id="thankyou"><b>Perfect! imma do the rest but but but HAHAHAHA ur gonna get the dare at the endd</b></div>
+    
+    <audio controls>
+      <source src="Nothing Beats A Jet2 Holiday.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="opinion-container">
+        <h3 class="spider-man-title">so what's ur opinion about this dumbass - i think ur wayy out of his league</h3>
+        <h3 class="spider-man-title">btw im the buddy of his that u slaughtered and i created this website</h3>
+        <textarea class="opinion-box" placeholder="Share your thoughts here..."></textarea>
+        <button class="submit-opinion" onclick="submitOpinion()">Submit Opinion</button>
+    </div>
+
+    <script>
+        function submitOpinion() {
+            const opinion = document.querySelector(".opinion-box").value;
+            if (opinion.trim() === "") {
+                alert("Please share your opinion!");
+                return;
+            }
+            
+            const emailData = {
+                service_id: "service_bqjg0qi",
+                template_id: "template_8mvryzx",
+                user_id: "WxCXlNRViNJxx243N",
+                template_params: {
+                    "to_name": "Venkatakrishnan",
+                    "from_name": "Leah",
+                    "foods": "Opinion: " + opinion
+                }
+            };
+            
+            fetch("https://api.emailjs.com/api/v1.0/email/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(emailData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Your opinion has been sent! Thanks for sharing!");
+                    document.querySelector(".opinion-box").value = "";
+                } else {
+                    alert("Error sending opinion.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Failed to send opinion. Please try again.");
+            });
+        }
+    </script>
+
+  </body>
+</html> 

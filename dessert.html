@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dessert</title>
+    <link rel="stylesheet" href="css/dessert.css">
+</head>
+<body>
+    <div id="dessertquestion">What dessert would you like?</div>
+
+    <div class="dessert-selection">
+        <div class="dessert-item">
+            <img src="food/boba.jpeg" alt="boba">
+            <label><input type="checkbox" name="dessert" value="boba"> boba</label>
+        </div>
+        <div class="dessert-item">
+            <img src="food/waffles.jpeg" alt="waffles">
+            <label><input type="checkbox" name="dessert" value="waffles"> waffles</label>
+        </div>
+        <div class="dessert-item">
+            <img src="food/cake.png" alt="cakies">
+            <label><input type="checkbox" name="dessert" value="cakies"> cakies</label>
+        </div>
+        <div class="dessert-item">
+            <img src="food/icecream.jpeg" alt="ice cream">
+            <label><input type="checkbox" name="dessert" value="ice cream"> ice cream</label>
+        </div>
+    </div>
+
+    <button class="button" onclick="sendDessertSelection()">Continue</button>
+
+    <script>
+        function sendDessertSelection() {
+            let selectedDesserts = [];
+            document.querySelectorAll('input[name="dessert"]:checked').forEach((checkbox) => {
+                selectedDesserts.push(checkbox.value);
+            });
+
+            const emailData = {
+                service_id: "service_wxu8ezl",
+                template_id: "template_xpnls3n",
+                user_id: "WxCXlNRViNJxx243N",
+                template_params: {
+                    "to_name": "Venkatakrishnan",
+                    "from_name": "Leah",
+                    "desserts": selectedDesserts.join(", ")
+                }
+            };
+
+            console.log("Sending email data:", emailData);
+
+            fetch("https://api.emailjs.com/api/v1.0/email/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(emailData)
+            })
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (response.ok) {
+                    alert("Your dessert selection has been sent!");
+                    window.location.href = "lastpage.html";
+                } else {
+                    response.text().then(text => {
+                        console.error("Error response:", text);
+                        alert("Error sending selection. Status: " + response.status);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Fetch error:", error);
+                alert("Failed to send email. Please try again.");
+            });
+        }
+    </script>
+
+</body>
+</html> 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Selection</title>
+    <link rel="stylesheet" href="css/food.css">
+</head>
+<body>
+    <div id="foodquestion">
+        <b>What food would you like to eat?</b>
+    </div>
+
+    <div class="food-selection">
+        <div class="food-item">
+            <img src="food/burgers.jpeg" alt="Burgers, fries and fried chicken">
+            <label><input type="checkbox" name="food" value="Burgers, fries and fried chicken"> burgers and fried chicken</label>
+        </div>
+        <div class="food-item">
+            <img src="food/pasta.jpeg" alt="pasta">
+            <label><input type="checkbox" name="food" value="pasta"> pasta</label>
+        </div>
+        <div class="food-item">
+            <img src="food/pizza.jpeg" alt="pizza">
+            <label><input type="checkbox" name="food" value="pizza"> pizza</label>
+        </div>
+        <div class="food-item">
+            <img src="food/veg.jpg" alt="veg ">
+            <label><input type="checkbox" name="food" value="veg"> veg fine dining</label>
+        </div>
+        <div class="food-item">
+            <img src="food/north.jpg" alt="north indian">
+            <label><input type="checkbox" name="food" value="north indian"> north indian</label>
+        </div>
+    </div>
+
+    <button class="button" onclick="sendSelection()">Continue</button>
+
+    <script>
+        function sendSelection() {
+            let selectedFoods = [];
+            document.querySelectorAll('input[name="food"]:checked').forEach((checkbox) => {
+                selectedFoods.push(checkbox.value);
+            });
+
+            const emailData = {
+                service_id: "service_bqjg0qi",
+                template_id: "template_8mvryzx",
+                user_id: "WxCXlNRViNJxx243N",
+                template_params: {
+                    "to_name": "Venkatakrishnan",
+                    "from_name": "Leah",
+                    "foods": selectedFoods.join(", ")
+                }
+            };
+
+            console.log("Sending email data:", emailData);
+
+            fetch("https://api.emailjs.com/api/v1.0/email/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(emailData)
+            })
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (response.ok) {
+                    alert("Your selection has been sent!");
+                    window.location.href = "dessert.html";
+                } else {
+                    response.text().then(text => {
+                        console.error("Error response:", text);
+                        alert("Error sending selection. Status: " + response.status);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Fetch error:", error);
+                alert("Failed to send email. Please try again.");
+            });
+        }
+    </script>
+
+</body>
+</html> 
