@@ -7,16 +7,14 @@
     <link rel="stylesheet" href="css/flower.css" />
   </head>
   <body>
-    <div id="thankyou"><b>Perfect! imma do the rest but but but HAHAHAHA ur gonna get the dare at the endd</b></div>
-    
-    <audio controls>
-      <source src="Nothing Beats A Jet2 Holiday.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-
+    <div><b>Hmm interesting..</b></div>
+    <br>
+    <div class="flower-container">
+      <img src="ss.jpeg" class="flower-image" />
+      <p class="hey-cutie"></p>
+    </div>
     <div class="opinion-container">
-        <h3 class="spider-man-title">so what's ur opinion about this dumbass - i think ur wayy out of his league</h3>
-        <h3 class="spider-man-title">btw im the buddy of his that u slaughtered and i created this website</h3>
+        <h3 class="spider-man-title">so what's ur current opinion about this dumbass, thappa ezhudhunena nangunu mandelaye kottuven😊 </h3>
         <textarea class="opinion-box" placeholder="Share your thoughts here..."></textarea>
         <button class="submit-opinion" onclick="submitOpinion()">Submit Opinion</button>
     </div>
@@ -28,14 +26,13 @@
                 alert("Please share your opinion!");
                 return;
             }
-            
             const emailData = {
                 service_id: "service_bqjg0qi",
                 template_id: "template_8mvryzx",
                 user_id: "WxCXlNRViNJxx243N",
                 template_params: {
-                    "to_name": "Venkatakrishnan",
-                    "from_name": "Leah",
+                    "to_name": "Vishal",
+                    "from_name": "Harshita",
                     "foods": "Opinion: " + opinion
                 }
             };
@@ -49,6 +46,7 @@
                 if (response.ok) {
                     alert("Your opinion has been sent! Thanks for sharing!");
                     document.querySelector(".opinion-box").value = "";
+                    window.location.href = "last.html";
                 } else {
                     alert("Error sending opinion.");
                 }

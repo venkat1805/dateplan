@@ -4,7 +4,9 @@ body {
   font-family: "Courier";
   background-color: #fff5e4;
   color: #ff9494;
+
 }
+
 
 img {
   height: 400px;
@@ -50,7 +52,6 @@ img {
   display: block;
   margin: 0 auto;
 }
-
 .hey-cutie {
   color: #ff9494;
   font-size: 50px;

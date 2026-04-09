@@ -7,20 +7,25 @@
     <link rel="stylesheet" href="css/datenight.css" />
   </head>
   <body>
-    <div class="flower-container"><img src="flower.png" class="flower-image"/><p class="hey-cutie">hey cutie</p></div>
-    <div id="dateQuestion"><b>Leah, would you like to go on a date with me?</b></div>
-    <button class="answerButton" onclick="location.href='thankyou.html'">
+    <div><p class="hey-cutie">Hiii😙</p></div>
+    <div id="dateQuestion"><b>M'lady, so Ive been wanting to ask you something for a while now..</b></div>
+    <div id="dateQuestion"><b>Would you be interested in hearing me out?</b></div>
+    
+    <button class="answerButton" onclick="location.href='askherout.html'">
       Yes 
     </button>
     <button class="answerButton" id="noButton">Nah im good</button>
     <br />
-    <img src="cat.gif" alt="cat asking question" class="responsive" />
+    <img 
+      src="https://media.giphy.com/media/6Azx1QoKCCYkPtyl1N/giphy.gif" 
+      class="responsive" 
+    />
     <script>
       document
         .getElementById("noButton")
         .addEventListener("click", function () {
           var yesButton = document.querySelector(
-            'button[onclick*="thankyou.html"]'
+            'button[onclick*="askherout.html"]'
           );
           var currentFontSize = parseInt(
             window.getComputedStyle(yesButton).fontSize

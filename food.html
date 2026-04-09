@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="foodquestion">
-        <b>What food would you like to eat?</b>
+        <b>Whats going to hit the spot🧐✍🏽</b>
     </div>
 
     <div class="food-selection">
@@ -25,12 +25,12 @@
             <label><input type="checkbox" name="food" value="pizza"> pizza</label>
         </div>
         <div class="food-item">
-            <img src="food/veg.jpg" alt="veg ">
-            <label><input type="checkbox" name="food" value="veg"> veg fine dining</label>
+            <img src="food/biryani.jpeg" alt="biryani">
+            <label><input type="checkbox" name="food" value="veg">biryani</label>
         </div>
         <div class="food-item">
-            <img src="food/north.jpg" alt="north indian">
-            <label><input type="checkbox" name="food" value="north indian"> north indian</label>
+            <img src="food/donuts.jpeg" alt="krispy kreme">
+            <label><input type="checkbox" name="food" value="north indian">donuts</label>
         </div>
     </div>
 
@@ -48,8 +48,8 @@
                 template_id: "template_8mvryzx",
                 user_id: "WxCXlNRViNJxx243N",
                 template_params: {
-                    "to_name": "Venkatakrishnan",
-                    "from_name": "Leah",
+                    "to_name": "Vishal",
+                    "from_name": "Harshita",
                     "foods": selectedFoods.join(", ")
                 }
             };
@@ -65,7 +65,7 @@
                 console.log("Response status:", response.status);
                 if (response.ok) {
                     alert("Your selection has been sent!");
-                    window.location.href = "dessert.html";
+                    window.location.href = "devouryou.html";
                 } else {
                     response.text().then(text => {
                         console.error("Error response:", text);
